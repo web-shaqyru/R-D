@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Үйлену тойы - Раджан мен Диляра</title>
+    <meta name="description" content="Уважаемые гости! Приглашаем вас на свадьбу Раджана и Диляры. Чтобы увидеть приглашение просим вас нажать на ссылку и листать вниз">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Свадьба Раджана и Диляры">
+    <meta property="og:description" content="Уважаемые гости! Приглашаем вас на свадьбу Раджана и Диляры. Чтобы увидеть приглашение просим вас нажать на ссылку и листать вниз">
+    <meta property="og:image" content="photo11.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Marck+Script&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- ===== LANGUAGE SWITCHER ===== -->
+        <div class="lang-switcher fade-in">
+            <a href="index.html">RU</a>
+            <span>|</span>
+            <a href="index_kz.html" class="active">KZ</a>
+        </div>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="video1.MP4" type="video/mp4">
+            </video>
+            <div class="hero-text">
+                <h2 class="hero-name">Раджан & Диляра</h2>
+                <h1 class="hero-title">Үйлену тойы</h1>
+
+                <!-- Круговой плеер -->
+                <div class="player-wrap">
+                    <div class="circle-text-ring">
+                        <svg viewBox="0 0 120 120" width="120" height="120">
+                            <defs>
+                                <path id="cp" d="M60,60 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"></path>
+                            </defs>
+                            <text font-size="8" font-family="Montserrat,sans-serif" font-weight="600" fill="#f8f5f0">
+                                <textPath href="#cp" startOffset="0" textLength="238.5" lengthAdjust="spacing">ОСЫ
+                                    ЖЕРДЕН МУЗЫКАНЫ ҚОСУ • ОСЫ ЖЕРДЕН МУЗЫКАНЫ ҚОСУ • </textPath>
+                            </text>
+                        </svg>
+                    </div>
+                    <button id="music-btn" class="play-btn" aria-label="Музыканы қосу">
+                        <svg class="icon-play-svg" viewBox="0 0 24 24">
+                            <!-- Иконка ноты -->
+                            <path
+                                d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
+                                fill="currentColor" />
+                        </svg>
+                        <svg class="icon-pause-svg hidden" viewBox="0 0 24 24">
+                            <rect x="6" y="5" width="4" height="14" />
+                            <rect x="14" y="5" width="4" height="14" />
+                        </svg>
+                    </button>
+                    <audio id="bg-music" loop>
+                        <source src="music.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== COUNTDOWN + INVITATION ===== -->
+        <section class="white-section">
+            <!-- Таймер -->
+            <div class="timer" id="timer">
+                <div class="timer-item"><span id="days">00</span>
+                    <p>күн</p>
+                </div>
+                <div class="timer-item"><span id="hours">00</span>
+                    <p>сағат</p>
+                </div>
+                <div class="timer-item"><span id="minutes">00</span>
+                    <p>минут</p>
+                </div>
+                <div class="timer-item"><span id="seconds">00</span>
+                    <p>секунд</p>
+                </div>
+            </div>
+
+            <!-- Текст приглашения -->
+            <div class="invitation-text">
+                <h3 class="script-heading">Құрметті қонақтар!</h3>
+                <p>Жанұямыздың қуанышы, балаларымыз
+                </p>
+                <div class="bride-name-inline">Раджан мен Диляраның</div>
+                <p>үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!</p>
+                <p class="parents-sig">Игі тілекпен,<br>ата-анасы Бекболат – Гүлназ</p>
+            </div>
+        </section>
+
+        <!-- Волна вниз -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 500 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,0 C100,80 400,80 500,0 L500,80 L0,80 Z" fill="#ffffff" />
+            </svg>
+        </div>
+
+        <!-- ===== DETAILS (INFO CARD ON PHOTO) ===== -->
+        <section class="details-section">
+            <div class="details-card">
+                <h3 class="serif-heading">Той туралы</h3>
+                <p class="detail-line">Той иелері: Бекболат - Гүлназ</p>
+
+                <h3 class="serif-heading">Өтетін уақыты</h3>
+                <p class="detail-line">15 тамыз &nbsp;|&nbsp; 18:00</p>
+
+                <h3 class="serif-heading">Өтетін орны</h3>
+                <p class="detail-line">Өскемен қаласы,<br>Оралхан Бөкей көшесі, 16/2<br>«Dastarkhan» мейрамханасы</p>
+
+                <a href="https://2gis.kz/ustkam/search/Оралхан%20Бокей%2016%2F2" target="_blank"
+                    class="btn-map">2GIS-тен ашу</a>
+            </div>
+        </section>
+
+        <!-- Волна вверх -->
+        <div class="wave-divider wave-up">
+            <svg viewBox="0 0 500 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,80 C100,0 400,0 500,80 L500,0 L0,0 Z" fill="#ffffff" />
+            </svg>
+        </div>
+
+        <!-- Декоративный разделитель (завитки) -->
+        <div class="ornament-divider">
+            <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg" width="180" height="30">
+                <path d="M10,15 Q30,5 50,15 Q70,25 90,15 Q110,5 130,15 Q150,25 170,15 Q185,8 190,15" fill="none"
+                    stroke="#c5a87a" stroke-width="1.5" opacity="0.7" />
+                <circle cx="100" cy="15" r="3" fill="#c5a87a" opacity="0.7" />
+            </svg>
+        </div>
+
+        <!-- ===== RSVP (FORM ON PHOTO) ===== -->
+        <section class="rsvp-section">
+            <div class="rsvp-inner">
+                <h2 class="rsvp-title">Құрметті қонақтар, тойымызға келетініңізді растауыңызды сұраймыз!</h2>
+
+                <form id="rsvp-form">
+                    <div class="field-group">
+                        <label>Атыңыз</label>
+                        <input type="text" id="first-name" name="first_name" placeholder="Атыңызды жазыңыз" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Тегіңіз</label>
+                        <input type="text" id="last-name" name="last_name" placeholder="Тегіңізді жазыңыз" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Келесіз бе?</label>
+                        <label class="radio-row">
+                            <input type="radio" name="attendance" value="Келемін" checked>
+                            <span class="radio-dot"></span> Келемін
+                        </label>
+                        <label class="radio-row">
+                            <input type="radio" name="attendance" value="Келе алмаймын">
+                            <span class="radio-dot"></span> Келе алмаймын
+                        </label>
+                    </div>
+
+                    <div class="field-group" id="persons-group">
+                        <label>Қанша адам келесіздер?</label>
+                        <input type="number" id="persons" name="persons" placeholder="?" min="1">
+                    </div>
+
+                    <div class="submit-wrap">
+                        <button type="submit" class="btn-submit">Жіберу</button>
+                    </div>
+                </form>
+
+                <div id="form-success" class="hidden success-msg">
+                    <p>Рақмет! Сіздің жауабыңыз қабылданды. 🎉</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="site-footer">
+            <p>2025 © Раджан мен Диляраның шақыруы</p>
+        </footer>
+
+    </div><!-- /app-container -->
+
+    <script src="script_kz.js"></script>
+</body>
+
+</html>

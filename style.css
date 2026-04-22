@@ -1,0 +1,1074 @@
+/*
+  style.css — Максимально похоже на https://online-shaqyru.kz/ru/uzatu/aq-bosaga/
+*/
+
+/* ============================
+   @font-face для казахских шрифтов
+   ============================ */
+@font-face {
+    font-family: 'KZ Rosa Marena';
+    src: url('kz_rosa.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AsylbekM02Shelley';
+    src: url('asylbek.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ============================
+   CSS Переменные
+   ============================ */
+:root {
+    --brown: #7c605a;
+    /* таймер, акцент */
+    --dark-text: #3d2b27;
+    /* основной тёмный текст */
+    --body-text: #555555;
+    --white: #ffffff;
+    --bg-cream: #f8f5f0;
+    /* кремовый фон белой секции */
+    --gold: #c5a87a;
+    /* декоративный золотистый */
+    --font-script: 'KZ Rosa Marena', 'Great Vibes', cursive;
+    --font-script2: 'AsylbekM02Shelley', 'Marck Script', cursive;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+/* ============================
+   Базовые стили
+   ============================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e0dbd5;
+    font-family: var(--font-sans);
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 480px;
+    background: var(--bg-cream);
+    min-height: 100vh;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.18);
+    position: relative;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ============================
+   Language Switcher
+   ============================ */
+.lang-switcher {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.lang-switcher a {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    opacity: 0.6;
+}
+
+.lang-switcher a.active {
+    opacity: 1;
+    font-weight: 700;
+}
+
+.lang-switcher a:hover {
+    opacity: 1;
+}
+
+.lang-switcher span {
+    opacity: 0.4;
+}
+
+/* ============================
+   HERO — Главный экран с фото
+   ============================ */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 550px;
+    background: #000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Лёгкий светлый градиент снизу, как на оригинале */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
+    background: linear-gradient(transparent, var(--bg-cream));
+    pointer-events: none;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    text-align: right;
+    padding: 140px 28px 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.hero-name {
+    font-family: var(--font-script);
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--bg-cream);
+    margin-bottom: 4px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.hero-title {
+    font-family: var(--font-script2);
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--bg-cream);
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================
+   Плеер — круговой вращающийся
+   ============================ */
+.player-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-text-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    animation: spin 12s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.play-btn {
+    position: relative;
+    z-index: 10;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--brown);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s;
+}
+
+.play-btn:hover {
+    transform: scale(1.08);
+}
+
+.play-btn svg {
+    fill: #fff;
+    width: 22px;
+    height: 22px;
+}
+
+.play-btn .icon-play-svg {
+    transform: translateX(1.5px);
+}
+
+.play-btn.playing {
+    animation: pulse-btn 2s ease-in-out infinite;
+}
+
+@keyframes pulse-btn {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(124, 96, 90, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 12px rgba(124, 96, 90, 0);
+    }
+}
+
+/* ============================
+   Белая секция (таймер + текст)
+   ============================ */
+.white-section {
+    background: var(--bg-cream);
+    padding: 40px 24px 0;
+    text-align: center;
+}
+
+/* Таймер — тёмно-коричневые скруглённые pill */
+.timer {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 36px;
+}
+
+.timer-item {
+    background: var(--brown);
+    border-radius: 22px;
+    flex: 1;
+    padding: 14px 6px 12px;
+    min-width: 60px;
+}
+
+.timer-item span {
+    font-family: var(--font-sans);
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+}
+
+.timer-item p {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 6px;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+}
+
+/* Текст приглашения */
+.invitation-text {
+    padding: 0 8px 40px;
+    font-size: 15px;
+    color: var(--body-text);
+    line-height: 1.8;
+}
+
+.invitation-text p {
+    margin-bottom: 16px;
+}
+
+.script-heading {
+    font-family: var(--font-script);
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--dark-text);
+    margin-bottom: 14px;
+    line-height: 1;
+}
+
+.bride-name-inline {
+    font-family: var(--font-script);
+    font-size: 52px;
+    color: var(--dark-text);
+    margin: 8px 0 14px;
+    line-height: 1;
+}
+
+.parents-sig {
+    font-family: var(--font-script2);
+    font-size: 22px;
+    color: var(--dark-text);
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/* ============================
+   Волновые разделители
+   ============================ */
+.wave-divider {
+    width: 100%;
+    display: block;
+    line-height: 0;
+}
+
+.wave-divider svg {
+    width: 100%;
+    display: block;
+}
+
+.wave-up {
+    margin-top: -1px;
+}
+
+/* ============================
+   Декоративный разделитель (SVG-завитки)
+   ============================ */
+.ornament-divider {
+    background: var(--bg-cream);
+    text-align: center;
+    padding: 10px 0 20px;
+}
+
+/* ============================
+   DETAILS — Карточка поверх фото
+   ============================ */
+.details-section {
+    position: relative;
+    background: url('photo2.jpg') center center / cover no-repeat;
+    background-attachment: local;
+    padding: 0 0 60px;
+}
+
+.details-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(245, 240, 235, 0.25);
+}
+
+.details-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.88);
+    margin: 0 20px;
+    padding: 40px 28px;
+    text-align: center;
+}
+
+.serif-heading {
+    font-family: var(--font-script2);
+    font-size: 28px;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.detail-line {
+    font-size: 15px;
+    color: var(--body-text);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    font-weight: 400;
+}
+
+.btn-map {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 28px;
+    border: 1.5px solid var(--dark-text);
+    color: var(--dark-text);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    background: transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.btn-map:hover {
+    background: var(--dark-text);
+    color: var(--white);
+}
+
+/* ============================
+   RSVP — Форма поверх фото
+   ============================ */
+.rsvp-section {
+    position: relative;
+    background: url('photo3.jpg') center center / cover no-repeat;
+    background-attachment: local;
+    padding: 60px 24px 60px;
+}
+
+.rsvp-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 15, 15, 0.58);
+}
+
+.rsvp-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.rsvp-title {
+    font-family: var(--font-script);
+    font-size: 34px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 36px;
+    text-align: left;
+}
+
+/* Поля формы */
+.field-group {
+    margin-bottom: 22px;
+}
+
+.field-group label:first-child,
+.field-group>label:not(.radio-row) {
+    display: block;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    font-family: var(--font-sans);
+}
+
+.field-group input[type="text"],
+.field-group input[type="number"] {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    font-size: 15px;
+    font-family: var(--font-sans);
+    color: #333;
+    outline: none;
+}
+
+.field-group input:focus {
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Радиокнопки */
+.radio-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--white);
+    font-size: 15px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.radio-row input[type="radio"] {
+    accent-color: #4a90e2;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.radio-dot {
+    display: none;
+}
+
+/* не нужен, используем нативный radio */
+
+/* Кнопка отправить */
+.submit-wrap {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-submit {
+    background: var(--white);
+    color: var(--dark-text);
+    border: none;
+    padding: 13px 50px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.btn-submit:hover {
+    background: #f0ebe5;
+}
+
+.success-msg {
+    text-align: center;
+    color: var(--white);
+    font-size: 18px;
+    padding: 30px 0;
+    font-family: var(--font-script);
+}
+
+/* ============================
+   Footer
+   ============================ */
+.site-footer {
+    background: #111;
+    color: rgba(255, 255, 255, 0.65);
+    text-align: center;
+    padding: 20px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+/* ====================================================
+   АНИМАЦИИ
+   ==================================================== */
+
+/* ── 1. Появление всего контейнера при загрузке ── */
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.app-container {
+    animation: page-enter 0.9s ease forwards;
+}
+
+/* ── 2. Hero: имя и подзаголовок скользят справа ── */
+@keyframes slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-name {
+    animation: slide-in-right 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s both;
+}
+
+.hero-title {
+    animation: slide-in-right 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.55s both;
+}
+
+/* ── 3. Плеер появляется снизу ── */
+@keyframes pop-up {
+    from {
+        opacity: 0;
+        transform: scale(0.6) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.player-wrap {
+    animation: pop-up 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.85s both;
+}
+
+/* ── 4. Таймер — ячейки по очереди ── */
+@keyframes timer-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.5) translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.timer-item:nth-child(1) {
+    animation: timer-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+.timer-item:nth-child(2) {
+    animation: timer-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s both;
+}
+
+.timer-item:nth-child(3) {
+    animation: timer-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
+}
+
+.timer-item:nth-child(4) {
+    animation: timer-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.55s both;
+}
+
+/* ── 5. Смена секунды — легкий тик ── */
+@keyframes tick {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateY(-5px);
+        opacity: 0.3;
+    }
+
+    60% {
+        transform: translateY(5px);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.timer-tick {
+    animation: tick 0.32s ease;
+}
+
+/* ── 6. Scroll fade-in ── */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.85s ease, transform 0.85s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── 7. Скрипт-заголовки и имя невесты ── */
+@keyframes fade-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.script-heading {
+    animation: fade-scale 1.2s ease 0.2s both;
+}
+
+.bride-name-inline {
+    animation: fade-scale 1.2s ease 0.4s both;
+}
+
+.parents-sig {
+    animation: fade-scale 1.2s ease 0.6s both;
+}
+
+/* ── 8. Карточка деталей ── */
+@keyframes card-rise {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.details-card {
+    animation: card-rise 1s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* ── 9. Кнопки — подъём и тень при hover ── */
+.btn-map,
+.btn-submit {
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.btn-map:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: #fdf9f5;
+}
+
+/* ── 10. Орнамент — мерцание ── */
+@keyframes shimmer {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.ornament-divider svg {
+    animation: shimmer 3.5s ease-in-out infinite;
+}
+
+/* ── 11. RSVP — элементы выезжают снизу поочередно ── */
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rsvp-title {
+    animation: slide-up 1s ease 0.2s both;
+}
+
+.field-group:nth-child(1) {
+    animation: slide-up 0.8s ease 0.35s both;
+}
+
+.field-group:nth-child(2) {
+    animation: slide-up 0.8s ease 0.5s both;
+}
+
+.field-group:nth-child(3) {
+    animation: slide-up 0.8s ease 0.65s both;
+}
+
+.submit-wrap {
+    animation: slide-up 0.8s ease 0.8s both;
+}
+
+/* ── 12. Плавающие лепестки (CSS + JS) ── */
+.petal {
+    position: fixed;
+    top: -20px;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 18px;
+    animation: fall linear forwards;
+    opacity: 0.85;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translateY(45vh) rotate(180deg) translateX(25px);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg) translateX(-15px);
+        opacity: 0;
+    }
+}
+
+/* ====================================================
+   АДАПТИВНОСТЬ — планшет, пК, альбомный режим
+   ==================================================== */
+
+/* ─ Таблет (600px+) и альбомный смартфон ─ */
+@media (min-width: 600px) {
+
+    /* Шире карточка сайта */
+    .app-container {
+        max-width: 560px;
+    }
+
+    .hero-name {
+        font-size: 84px;
+    }
+
+    .hero-title {
+        font-size: 46px;
+    }
+
+    .script-heading {
+        font-size: 54px;
+    }
+
+    .bride-name-inline {
+        font-size: 60px;
+    }
+
+    .parents-sig {
+        font-size: 26px;
+    }
+
+    .timer-item {
+        padding: 16px 10px 14px;
+    }
+
+    .timer-item span {
+        font-size: 36px;
+    }
+
+    .timer-item p {
+        font-size: 12px;
+    }
+
+    .rsvp-title {
+        font-size: 40px;
+    }
+
+    .details-card {
+        padding: 50px 40px;
+    }
+
+    .serif-heading {
+        font-size: 32px;
+    }
+
+    .detail-line {
+        font-size: 16px;
+    }
+}
+
+/* ─ Альбомный режим на смартфоне / Hero невысокий ─ */
+@media (orientation: landscape) and (max-width: 900px) {
+
+    .hero {
+        min-height: 100vh;
+        height: 100svh;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .hero-text {
+        padding: 60px 32px 60px 0;
+    }
+
+    .hero-name {
+        font-size: 60px;
+    }
+
+    .hero-title {
+        font-size: 34px;
+    }
+
+    .player-wrap {
+        width: 100px;
+        height: 100px;
+    }
+
+    .circle-text-ring {
+        width: 100px;
+        height: 100px;
+    }
+
+    .white-section {
+        padding-top: 30px;
+    }
+
+    .timer {
+        gap: 8px;
+    }
+
+    .timer-item span {
+        font-size: 28px;
+    }
+
+    .timer-item {
+        padding: 12px 6px 10px;
+    }
+}
+
+/* ─ ПК / планшет от 768px — двухколоночный лэйаут ─ */
+@media (min-width: 900px) {
+
+    body {
+        background: linear-gradient(135deg, #e8e2db 0%, #d8cfc7 50%, #e8e2db 100%);
+        background-attachment: fixed;
+        align-items: flex-start;
+    }
+
+    /* Обертка-контейнер для полноэкранного десктоп — 2 колонки */
+    .outer-layout {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px;
+        min-height: 100vh;
+    }
+
+    .app-container {
+        max-width: 480px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        margin: 40px auto;
+    }
+
+    .hero-name {
+        font-size: 80px;
+    }
+
+    .hero-title {
+        font-size: 44px;
+    }
+
+    .hero-text {
+        padding: 160px 36px 70px 0;
+    }
+
+    /* Плеер — немного крупнее */
+    .player-wrap {
+        width: 130px;
+        height: 130px;
+    }
+
+    .circle-text-ring {
+        width: 130px;
+        height: 130px;
+    }
+
+    .play-btn {
+        width: 58px;
+        height: 58px;
+    }
+
+    /* Таймер */
+    .timer-item span {
+        font-size: 38px;
+    }
+
+    .timer-item p {
+        font-size: 12px;
+    }
+
+    .timer-item {
+        padding: 18px 10px 15px;
+        border-radius: 28px;
+    }
+
+    /* Типографика */
+    .script-heading {
+        font-size: 56px;
+    }
+
+    .bride-name-inline {
+        font-size: 64px;
+    }
+
+    .parents-sig {
+        font-size: 26px;
+    }
+
+    .invitation-text p {
+        font-size: 16px;
+    }
+
+    /* Секция деталей */
+    .details-card {
+        padding: 55px 50px;
+    }
+
+    .serif-heading {
+        font-size: 34px;
+    }
+
+    .detail-line {
+        font-size: 16px;
+    }
+
+    .btn-map {
+        padding: 12px 34px;
+        font-size: 15px;
+    }
+
+    /* RSVP */
+    .rsvp-section {
+        padding: 80px 40px;
+    }
+
+    .rsvp-title {
+        font-size: 42px;
+    }
+
+    .btn-submit {
+        padding: 15px 60px;
+        font-size: 16px;
+    }
+
+    /* Футер */
+    .site-footer {
+        font-size: 14px;
+        padding: 25px;
+    }
+}
+
+/* ─ Очень широкий экран (1200px+): карточка центрируется с красивым фоном ─ */
+@media (min-width: 1200px) {
+    body {
+        background-image:
+            radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+            radial-gradient(circle at 80% 80%, rgba(197, 168, 122, 0.1) 0%, transparent 60%),
+            linear-gradient(135deg, #e8e2db 0%, #d8cfc7 50%, #e8e2db 100%);
+    }
+
+    .app-container {
+        margin: 50px auto;
+    }
+}
