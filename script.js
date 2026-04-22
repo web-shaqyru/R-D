@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ——————————————————————————————
        2. ТАЙМЕР с тик-анимацией
     —————————————————————————————— */
-    const eventDate = new Date('2026-08-15T18:00:00');
+    const eventDate = new Date('2026-08-30T18:00:00');
 
     function animateTick(el) {
         el.classList.remove('timer-tick');
@@ -70,10 +70,52 @@ document.addEventListener('DOMContentLoaded', function () {
     const heroVideo = document.querySelector('.hero-video');
 
     if (heroVideo) {
-        heroVideo.playbackRate = 0.5;
+        heroVideo.muted = true;
+        
+        // Устанавливаем скорость, когда метаданные загружены
+        heroVideo.addEventListener('loadedmetadata', () => {
+            heroVideo.playbackRate = 0.5;
+        });
+
+        // Попытка автозапуска
+        const startVideo = () => {
+            heroVideo.play().catch(() => {
+                console.log("Автозапуск видео заблокирован, ждем взаимодействия.");
+            });
+        };
+
+        if (heroVideo.readyState >= 1) {
+            heroVideo.playbackRate = 0.5;
+            startVideo();
+        } else {
+            heroVideo.addEventListener('loadeddata', startVideo);
+        }
     }
 
     let isPlaying = false;
+
+    function startMusic() {
+        if (isPlaying) return;
+        
+        if (audio.currentTime === 0) {
+            audio.currentTime = 47;
+        }
+
+        if (heroVideo && heroVideo.paused) {
+            heroVideo.play();
+        }
+
+        audio.play()
+            .then(() => {
+                iconPlay.classList.add('hidden');
+                iconPause.classList.remove('hidden');
+                btn.classList.add('playing');
+                isPlaying = true;
+            })
+            .catch(err => {
+                console.log("Музыка все еще заблокирована:", err);
+            });
+    }
 
     btn.addEventListener('click', function () {
         if (isPlaying) {
@@ -83,21 +125,21 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.classList.remove('playing');
             isPlaying = false;
         } else {
-            if (audio.currentTime === 0) {
-                audio.currentTime = 47;
-            }
-            audio.play()
-                .then(() => {
-                    iconPlay.classList.add('hidden');
-                    iconPause.classList.remove('hidden');
-                    btn.classList.add('playing');
-                    isPlaying = true;
-                })
-                .catch(() => {
-                    alert('Нажмите OK, чтобы разрешить воспроизведение музыки.');
-                });
+            startMusic();
         }
     });
+
+    // Запуск при любом первом взаимодействии с сайтом (клик или скролл)
+    const initInteraction = () => {
+        startMusic();
+        window.removeEventListener('click', initInteraction);
+        window.removeEventListener('scroll', initInteraction);
+        window.removeEventListener('touchstart', initInteraction);
+    };
+
+    window.addEventListener('click', initInteraction);
+    window.addEventListener('scroll', initInteraction);
+    window.addEventListener('touchstart', initInteraction);
 
     /* ——————————————————————————————
        4. ФОРМА RSVP
