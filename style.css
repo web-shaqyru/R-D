@@ -136,6 +136,12 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: 1;
+    pointer-events: none; /* Убирает системную кнопку плей на мобильных */
+}
+
+/* Скрываем стандартные контролы видео, если они вдруг появятся */
+.hero-video::-webkit-media-controls {
+    display: none !important;
 }
 
 /* Лёгкий светлый градиент снизу, как на оригинале */
@@ -154,10 +160,11 @@ body {
     position: relative;
     z-index: 2;
     text-align: right;
-    padding: 140px 28px 60px 0;
+    padding: 140px 28px 60px 28px; /* Добавили отступ слева */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    width: 100%; /* Занимает всю ширину для управления элементами */
 }
 
 .hero-name {
@@ -189,6 +196,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: flex-start; /* Переносим кнопку влево */
+    margin-top: 20px;
 }
 
 .circle-text-ring {
@@ -431,12 +440,12 @@ body {
    ============================ */
 .rsvp-section {
     position: relative;
-    background: url('photo3.jpg') center 10% / cover no-repeat;
+    background: url('photo11.jpg') center 20% / cover no-repeat;
     background-attachment: local;
-    padding: 480px 24px 80px; /* Еще больше увеличили отступ, чтобы текст ушел под лица */
+    padding: 60px 24px 80px; /* Уменьшили отступ сверху, чтобы заголовок был над головами */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .rsvp-section::before {
@@ -459,8 +468,8 @@ body {
     font-weight: 400;
     color: var(--white);
     line-height: 1.3;
-    margin-bottom: 36px;
-    text-align: center; /* Центрируем текст */
+    margin-bottom: 55vh; /* Огромный отступ под заголовком, чтобы пропустить лица */
+    text-align: center;
 }
 
 /* Поля формы */

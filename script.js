@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ——————————————————————————————
        5. ПЛАВАЮЩИЕ ЛЕПЕСТКИ 🌸
     —————————————————————————————— */
-    const PETALS = ['🌸', '🌹', '🌺', '✨', '🌷'];
+    const PETALS = ['🌸', '🌹', '🌺', '✨', '🌷', '💕', '❤️', '💗', '💍'];
 
     function spawnPetal() {
         const p = document.createElement('span');
