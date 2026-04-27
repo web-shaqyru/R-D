@@ -201,4 +201,71 @@ document.addEventListener('DOMContentLoaded', function () {
     spawnPetal();
     setTimeout(spawnPetal, 800);
     setInterval(spawnPetal, 2500);
+
+    /* ——————————————————————————————
+       6. DRESSCODE COLOR PICKER & AUTO-CHANGE
+    —————————————————————————————— */
+    const colorSwatches = document.querySelectorAll('.color-swatch');
+    const dressFills = document.querySelectorAll('.dresscode-fill');
+    const autoColors = ['#D6CCBC', '#5E3A2C'];
+
+    if (colorSwatches.length > 0) {
+        colorSwatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                colorSwatches.forEach(s => s.classList.remove('active'));
+                swatch.classList.add('active');
+                const color = swatch.style.backgroundColor;
+                dressFills.forEach(el => {
+                    el.style.fill = color;
+                });
+            });
+        });
+
+        // Автоматическая смена цветов (каждые 2 секунды)
+        setInterval(() => {
+            // Теперь каждый выбирает цвет независимо, чтобы иногда они были одинаковыми
+            const color1 = autoColors[Math.floor(Math.random() * autoColors.length)];
+            const color2 = autoColors[Math.floor(Math.random() * autoColors.length)];
+            
+            dressFills.forEach((el, i) => {
+                el.style.transition = 'fill 1s ease';
+                // Первые 5 путей - это костюм, остальные 2 - платье
+                if (i < 5) {
+                    el.style.fill = color1;
+                } else {
+                    el.style.fill = color2;
+                }
+            });
+        }, 2000);
+    }
+
+    /* ——————————————————————————————
+       7. AUTO SCROLL DOWN
+    —————————————————————————————— */
+    let autoScrollActive = true;
+    const scrollSpeed = 0.5; // Скорость (пикселей за кадр)
+
+    function step() {
+        if (!autoScrollActive) return;
+        
+        window.scrollBy(0, scrollSpeed);
+        
+        // Проверка на конец страницы
+        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2) {
+            autoScrollActive = false;
+        } else {
+            requestAnimationFrame(step);
+        }
+    }
+
+    // Запуск через 3 секунды после загрузки
+    setTimeout(() => {
+        requestAnimationFrame(step);
+    }, 3000);
+
+    // Остановка при ручном вмешательстве пользователя
+    const stopScroll = () => { autoScrollActive = false; };
+    window.addEventListener('wheel', stopScroll);
+    window.addEventListener('touchstart', stopScroll);
+    window.addEventListener('mousedown', stopScroll);
 });

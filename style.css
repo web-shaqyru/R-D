@@ -19,6 +19,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'KZ Cavaler';
+    src: url('kz_cavaler.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* ============================
    CSS Переменные
    ============================ */
@@ -36,7 +43,7 @@
     --font-script: 'KZ Rosa Marena', 'Great Vibes', cursive;
     --font-script2: 'AsylbekM02Shelley', 'Marck Script', cursive;
     --font-serif: 'Playfair Display', serif;
-    --font-sans: 'Montserrat', sans-serif;
+    --font-sans: 'KZ Cavaler', 'Montserrat', sans-serif;
 }
 
 /* ============================
@@ -1084,3 +1091,74 @@ body {
         margin: 50px auto;
     }
 }
+
+/* ============================
+   DRESS CODE (INTERACTIVE)
+   ============================ */
+.dresscode-section {
+    background: url('photo3.jpg') center center / cover no-repeat;
+    background-attachment: local;
+    padding: 0 0 60px;
+    position: relative;
+}
+
+.dresscode-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(245, 240, 235, 0.25);
+}
+
+.detail-card-dresscode {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.88);
+    margin: 0 20px;
+    padding: 40px 28px;
+    text-align: center;
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 20px 0 10px;
+}
+
+.color-swatch {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.color-swatch:hover {
+    transform: scale(1.2);
+}
+
+.color-swatch.active {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.35);
+}
+
+.dresscode-svg {
+    max-width: 300px;
+    display: block;
+    margin: 10px auto 0;
+    overflow: visible;
+}
+
+.dresscode-fill {
+    transition: fill 0.4s ease;
+}
+
+.dress-note {
+    font-size: 14px;
+    color: var(--body-text);
+    margin-top: 15px;
+    font-style: italic;
+    line-height: 1.4;
+}

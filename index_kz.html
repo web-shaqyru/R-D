@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Үйлену тойы - Раджан мен Диляра</title>
-    <meta name="description" content="Уважаемые гости! Приглашаем вас на свадьбу Раджана и Диляры. Чтобы увидеть приглашение просим вас нажать на ссылку и листать вниз">
-    
+    <meta name="description"
+        content="Уважаемые гости! Приглашаем вас на свадьбу Раджана и Диляры. Чтобы увидеть приглашение просим вас нажать на ссылку и листать вниз">
+
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Свадьба Раджана и Диляры">
-    <meta property="og:description" content="Уважаемые гости! Приглашаем вас на свадьбу Раджана и Диляры. Чтобы увидеть приглашение просим вас нажать на ссылку и листать вниз">
+    <meta property="og:description"
+        content="Уважаемые гости! Приглашаем вас на свадьбу Раджана и Диляры. Чтобы увидеть приглашение просим вас нажать на ссылку и листать вниз">
     <meta property="og:image" content="photo11.jpg">
 
     <!-- Google Fonts -->
@@ -142,6 +144,113 @@
                 <circle cx="100" cy="15" r="3" fill="#c5a87a" opacity="0.7" />
             </svg>
         </div>
+
+        <!-- ===== DRESS CODE ===== -->
+        <section class="dresscode-section fade-in">
+            <div class="detail-card-dresscode">
+                <h3 class="serif-heading">Дресс-код</h3>
+                <p class="detail-line">Тойдың түс гаммасын қолдасаңыздар, қуаныштымыз:</p>
+
+                <div class="color-palette">
+                    <div class="color-swatch" style="background:#D6CCBC;" title="Бежевый"></div>
+                    <div class="color-swatch" style="background:#5E3A2C;" title="Шоколад"></div>
+                </div>
+
+                <svg id="dresscode-svg" class="dresscode-svg" viewBox="0 0 400 400" width="100%">
+                    <defs>
+                        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.08" />
+                        </filter>
+                    </defs>
+
+                    <!-- МУЖСКОЙ КОСТЮМ (слева) -->
+                    <!-- ЗАЛИВКИ ПИДЖАКА -->
+                    <!-- Рукава -->
+                    <path class="dresscode-fill" fill="#5E3A2C" d="M 65 105 C 50 120, 40 180, 45 230 L 60 230 C 60 180, 65 150, 75 115 Z" filter="url(#shadow)"/>
+                    <path class="dresscode-fill" fill="#5E3A2C" d="M 155 105 C 170 120, 180 180, 175 230 L 160 230 C 160 180, 155 150, 145 115 Z" filter="url(#shadow)"/>
+                    <!-- Корпус пиджака -->
+                    <path class="dresscode-fill" fill="#5E3A2C" d="M 65 105 C 65 150, 75 200, 80 235 C 85 245, 100 250, 110 240 C 120 250, 135 245, 140 235 C 145 200, 155 150, 155 105 L 135 105 L 110 185 L 85 105 Z" filter="url(#shadow)"/>
+                    <!-- Лацканы -->
+                    <path class="dresscode-fill" fill="#5E3A2C" d="M 110 185 L 85 105 L 75 115 L 60 110 L 75 150 Z"/>
+                    <path class="dresscode-fill" fill="#5E3A2C" d="M 110 185 L 135 105 L 145 115 L 160 110 L 145 150 Z"/>
+
+                    <!-- КОНТУРЫ -->
+                    <g fill="none" stroke="#2d2a28" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+                        <!-- Рубашка -->
+                        <polygon fill="#ffffff" stroke="none" points="85,105 110,185 135,105 135,85 85,85"/>
+                        <path fill="#ffffff" d="M 85 105 L 110 112 L 135 105"/>
+                        
+                        <!-- Галстук-бабочка -->
+                        <path fill="#2d2a28" stroke="none" d="M 110 102 L 95 92 L 95 112 Z"/>
+                        <path fill="#2d2a28" stroke="none" d="M 110 102 L 125 92 L 125 112 Z"/>
+                        <rect x="105" y="98" width="10" height="8" rx="2" fill="#2d2a28" stroke="none"/>
+
+                        <!-- Контур рукавов -->
+                        <path d="M 65 105 C 50 120, 40 180, 45 230 L 60 230 C 60 180, 65 150, 75 115"/>
+                        <path d="M 155 105 C 170 120, 180 180, 175 230 L 160 230 C 160 180, 155 150, 145 115"/>
+
+                        <!-- Контур корпуса -->
+                        <path d="M 65 105 C 65 150, 75 200, 80 235 C 85 245, 100 250, 110 240 C 120 250, 135 245, 140 235 C 145 200, 155 150, 155 105 L 135 105 L 110 185 L 85 105 Z"/>
+
+                        <!-- Центральная линия -->
+                        <line x1="110" y1="185" x2="110" y2="240"/>
+
+                        <!-- Контур лацканов -->
+                        <path d="M 110 185 L 85 105 L 75 115 L 60 110 L 75 150 Z"/>
+                        <path d="M 110 185 L 135 105 L 145 115 L 160 110 L 145 150 Z"/>
+
+                        <!-- Деталь воротника -->
+                        <line x1="75" y1="115" x2="82" y2="118"/>
+                        <line x1="145" y1="115" x2="138" y2="118"/>
+
+                        <!-- Нагрудный платок -->
+                        <path fill="#ffffff" stroke-width="1" d="M 125 130 L 135 125 L 138 128 L 125 133 Z"/>
+                        
+                        <!-- Карманы -->
+                        <rect x="75" y="205" width="20" height="5" rx="1"/>
+                        <rect x="125" y="205" width="20" height="5" rx="1"/>
+
+                        <!-- Пуговицы -->
+                        <circle cx="110" cy="190" r="2.2" fill="#2d2a28" stroke="none"/>
+                        <circle cx="110" cy="205" r="2.2" fill="#2d2a28" stroke="none"/>
+
+                        <!-- Манжеты -->
+                        <line x1="45" y1="225" x2="60" y2="225"/>
+                        <line x1="175" y1="225" x2="160" y2="225"/>
+
+                        <!-- Подставка (манекен/вешалка снизу) -->
+                        <line x1="110" y1="240" x2="110" y2="340"/>
+                        <line x1="85" y1="340" x2="135" y2="340"/>
+                        <line x1="75" y1="345" x2="145" y2="345"/>
+                    </g>
+
+                    <!-- ЖЕНСКОЕ ПЛАТЬЕ (справа) -->
+                    <!-- ЗАЛИВКИ ПЛАТЬЯ (меняются при клике) -->
+                    <path class="dresscode-fill" fill="#D6CCBC" d="M 262 115 Q 275 120 280 125 Q 285 120 298 115 C 305 130, 300 145, 292 160 Q 280 165 268 160 C 260 145, 255 130, 262 115 Z" />
+                    <path class="dresscode-fill" fill="#D6CCBC" d="M 268 160 Q 280 165 292 160 Q 330 250 350 330 Q 338 335 325 325 Q 305 340 280 340 Q 255 340 235 325 Q 222 335 210 330 Q 230 250 268 160 Z" />
+
+                    <!-- КОНТУРЫ ПЛАТЬЯ -->
+                    <g fill="none" class="dresscode-stroke" stroke="#2b2827" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+                        <path d="M 280 80 L 280 75 C 280 50, 300 50, 290 40 C 285 35, 275 40, 275 45" />
+                        <polygon points="280,80 250,95 252,100 280,86 308,100 310,95" />
+                        <line x1="262" y1="92" x2="265" y2="115" />
+                        <line x1="298" y1="92" x2="295" y2="115" />
+                        <path d="M 262 115 Q 275 120 280 125 Q 285 120 298 115" />
+                        <path d="M 262 115 C 255 130, 260 145, 268 160" />
+                        <path d="M 298 115 C 305 130, 300 145, 292 160" />
+                        <path d="M 268 160 Q 280 165 292 160" />
+                        <path d="M 268 160 Q 230 250 210 330" />
+                        <path d="M 292 160 Q 330 250 350 330" />
+                        <path d="M 210 330 Q 222 335 235 325 Q 255 340 280 340 Q 305 340 325 325 Q 338 335 350 330" />
+                        <path d="M 276 162 Q 255 250 235 325" />
+                        <path d="M 284 162 Q 305 250 325 325" />
+                    </g>
+                </svg>
+
+                <p class="dress-note">Біз сіздерді дәл өздеріңіздей әдемі кешкі образда күтеміз!</p>
+            </div>
+        </section>
+
 
         <!-- ===== RSVP (FORM ON PHOTO) ===== -->
         <section class="rsvp-section">
