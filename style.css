@@ -94,7 +94,7 @@ body {
     padding: 8px 14px;
     border-radius: 20px;
     font-family: var(--font-sans);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -307,7 +307,7 @@ body {
 
 .timer-item span {
     font-family: var(--font-sans);
-    font-size: 36px;
+    font-size: 42px;
     font-weight: 700;
     color: var(--white);
     display: block;
@@ -325,7 +325,7 @@ body {
 /* Текст приглашения */
 .invitation-text {
     padding: 0 8px 40px;
-    font-size: 19px;
+    font-size: 22px;
     color: var(--body-text);
     line-height: 1.8;
 }
@@ -336,7 +336,7 @@ body {
 
 .script-heading {
     font-family: var(--font-script);
-    font-size: 48px;
+    font-size: 54px;
     font-weight: 400;
     color: var(--dark-text);
     margin-bottom: 14px;
@@ -345,7 +345,7 @@ body {
 
 .bride-name-inline {
     font-family: var(--font-script);
-    font-size: 52px;
+    font-size: 60px;
     color: var(--dark-text);
     margin: 8px 0 14px;
     line-height: 1;
@@ -353,7 +353,7 @@ body {
 
 .parents-sig {
     font-family: var(--font-script2);
-    font-size: 22px;
+    font-size: 32px;
     color: var(--dark-text);
     line-height: 1.6;
     margin-top: 20px;
@@ -414,14 +414,14 @@ body {
 
 .serif-heading {
     font-family: var(--font-script2);
-    font-size: 28px;
+    font-size: 34px;
     color: var(--dark-text);
     margin-bottom: 10px;
     font-weight: 400;
 }
 
 .detail-line {
-    font-size: 19px;
+    font-size: 22px;
     color: var(--body-text);
     line-height: 1.7;
     margin-bottom: 28px;
@@ -436,7 +436,7 @@ body {
     color: var(--dark-text);
     text-decoration: none;
     font-family: var(--font-sans);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     letter-spacing: 0.5px;
     background: transparent;
@@ -495,7 +495,7 @@ body {
 .field-group>label:not(.radio-row) {
     display: block;
     color: var(--white);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 8px;
     font-family: var(--font-sans);
@@ -507,7 +507,7 @@ body {
     padding: 13px 16px;
     background: rgba(255, 255, 255, 0.92);
     border: none;
-    font-size: 19px;
+    font-size: 22px;
     font-family: var(--font-sans);
     color: #333;
     outline: none;
@@ -524,7 +524,7 @@ body {
     align-items: center;
     gap: 8px;
     color: var(--white);
-    font-size: 19px;
+    font-size: 22px;
     margin-bottom: 8px;
     cursor: pointer;
 }
@@ -554,7 +554,7 @@ body {
     border: none;
     padding: 13px 50px;
     font-family: var(--font-sans);
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
@@ -582,7 +582,7 @@ body {
     text-align: center;
     padding: 20px;
     font-family: var(--font-sans);
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: 0.5px;
 }
 
@@ -907,7 +907,7 @@ body {
     }
 
     .detail-line {
-        font-size: 20px;
+        font-size: 24px;
     }
 }
 
@@ -1043,7 +1043,7 @@ body {
     }
 
     .invitation-text p {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     /* Секция деталей */
@@ -1056,12 +1056,12 @@ body {
     }
 
     .detail-line {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .btn-map {
         padding: 12px 34px;
-        font-size: 19px;
+        font-size: 21px;
     }
 
     /* RSVP */
@@ -1075,12 +1075,12 @@ body {
 
     .btn-submit {
         padding: 15px 60px;
-        font-size: 20px;
+        font-size: 22px;
     }
 
     /* Футер */
     .site-footer {
-        font-size: 18px;
+        font-size: 20px;
         padding: 25px;
     }
 }
@@ -1163,7 +1163,7 @@ body {
 }
 
 .dress-note {
-    font-size: 17px;
+    font-size: 19px;
     color: var(--body-text);
     margin-top: 15px;
     font-style: italic;
