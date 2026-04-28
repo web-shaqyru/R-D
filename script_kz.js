@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function animateTick(el) {
         el.classList.remove('timer-tick');
-        void el.offsetWidth; // force reflow
+        void el.offsetWidth;
         el.classList.add('timer-tick');
         el.addEventListener('animationend', () => el.classList.remove('timer-tick'), { once: true });
     }
@@ -61,26 +61,20 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateTimer, 1000);
 
     /* ——————————————————————————————
-       3. МУЗЫКАЛЬНЫЙ ПЛЕЕР
+       3. ВИДЕО — запуск без звука
     —————————————————————————————— */
-    const audio = document.getElementById('bg-music');
-    const btn = document.getElementById('music-btn');
-    const iconPlay = btn.querySelector('.icon-play-svg');
-    const iconPause = btn.querySelector('.icon-pause-svg');
     const heroVideo = document.querySelector('.hero-video');
 
     if (heroVideo) {
         heroVideo.muted = true;
-        
-        // Устанавливаем скорость, когда метаданные загружены
+
         heroVideo.addEventListener('loadedmetadata', () => {
             heroVideo.playbackRate = 0.5;
         });
 
-        // Попытка автозапуска
         const startVideo = () => {
             heroVideo.play().catch(() => {
-                console.log("Автозапуск видео заблокирован, ждем взаимодействия.");
+                console.log('Автозапуск видео заблокирован.');
             });
         };
 
@@ -92,14 +86,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    /* ——————————————————————————————
+       4. МУЗЫКАЛЬНЫЙ ПЛЕЕР
+    —————————————————————————————— */
+    const audio = document.getElementById('bg-music');
+    const btn = document.getElementById('music-btn');
+    const iconPlay = btn.querySelector('.icon-play-svg');
+    const iconPause = btn.querySelector('.icon-pause-svg');
+
     let isPlaying = false;
 
     function startMusic() {
         if (isPlaying) return;
-        
-        if (audio.currentTime === 0) {
-            audio.currentTime = 46;
-        }
 
         if (heroVideo && heroVideo.paused) {
             heroVideo.play();
@@ -113,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 isPlaying = true;
             })
             .catch(err => {
-                console.log("Музыка все еще заблокирована:", err);
+                console.log('Музыка заблокирована:', err);
             });
     }
 
@@ -129,64 +127,100 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Запуск при любом первом взаимодействии с сайтом
-    const initInteraction = () => {
-        startMusic();
-        // Если автопрокрутка еще не началась, запустим ее раньше (на взаимодействие)
-        if (autoScrollActive && !scrollStarted) {
-            scrollStarted = true;
+    /* ——————————————————————————————
+       5. AUTO SCROLL DOWN
+    —————————————————————————————— */
+    let autoScrollActive = false;
+    let scrollStarted = false;
+    const scrollSpeed = 0.5;
+
+    function step() {
+        if (!autoScrollActive) return;
+
+        window.scrollBy(0, scrollSpeed);
+
+        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+        const totalHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+
+        if ((window.innerHeight + scrollPos) >= totalHeight - 5) {
+            autoScrollActive = false;
+        } else {
             requestAnimationFrame(step);
         }
-        window.removeEventListener('click', initInteraction);
-        window.removeEventListener('scroll', initInteraction);
-        window.removeEventListener('touchstart', initInteraction);
-    };
+    }
 
-    window.addEventListener('click', initInteraction);
-    window.addEventListener('scroll', initInteraction);
-    window.addEventListener('touchstart', initInteraction);
+    const stopScroll = () => {
+        if (autoScrollActive) {
+            autoScrollActive = false;
+        }
+    };
+    window.addEventListener('wheel', stopScroll, { passive: true });
+    window.addEventListener('touchmove', stopScroll, { passive: true });
+    window.addEventListener('mousedown', stopScroll);
 
     /* ——————————————————————————————
-       4. ФОРМА RSVP
+       6. ЗАСТАВКА «БАСЫҢЫЗ БАСТАУ ҮШІН»
+    —————————————————————————————— */
+    const splash = document.getElementById('splash-screen');
+
+    if (splash) {
+        splash.addEventListener('click', function () {
+            startMusic();
+
+            if (!scrollStarted) {
+                scrollStarted = true;
+                autoScrollActive = true;
+                requestAnimationFrame(step);
+            }
+
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 600);
+        });
+    }
+
+    /* ——————————————————————————————
+       7. ФОРМА RSVP
     —————————————————————————————— */
     const form = document.getElementById('rsvp-form');
     const successMsg = document.getElementById('form-success');
 
-        if (form) {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const data = {
-                    firstName: document.getElementById('first-name')?.value || '',
-                    lastName: document.getElementById('last-name')?.value || '',
-                    attendance: form.querySelector('input[name="attendance"]:checked')?.value || '',
-                    persons: document.getElementById('persons')?.value || ''
-                };
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const data = {
+                firstName: document.getElementById('first-name')?.value || '',
+                lastName: document.getElementById('last-name')?.value || '',
+                attendance: form.querySelector('input[name="attendance"]:checked')?.value || '',
+                persons: document.getElementById('persons')?.value || ''
+            };
 
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbws2mpQyC-iu3s628x27gvzIygs8qExTJ4l_zqaHOCMH6kkCq-rhSReSWuZl-Y6suDa/exec';
-                const submitBtn = form.querySelector('.btn-submit');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Жіберілуде...';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbws2mpQyC-iu3s628x27gvzIygs8qExTJ4l_zqaHOCMH6kkCq-rhSReSWuZl-Y6suDa/exec';
+            const submitBtn = form.querySelector('.btn-submit');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Жіберілуде...';
 
-                fetch(scriptURL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: new URLSearchParams(data)
-                })
-                .then(() => {
-                    form.classList.add('hidden');
-                    successMsg.classList.remove('hidden');
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    alert('Қате орын алды. Қайтадан байқап көріңіз.');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Жіберу';
-                });
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: new URLSearchParams(data)
+            })
+            .then(() => {
+                form.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Қате орын алды. Қайтадан байқап көріңіз.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Жіберу';
             });
-        }
+        });
+    }
 
     /* ——————————————————————————————
-       5. ПЛАВАЮЩИЕ ЛЕПЕСТКИ 🌸
+       8. ПЛАВАЮЩИЕ ЛЕПЕСТКИ 🌸
     —————————————————————————————— */
     const PETALS = ['🌸', '🌹', '🌺', '✨', '🌷', '💕', '❤️', '💗', '💍'];
 
@@ -202,13 +236,12 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => p.remove(), (dur + 0.3) * 1000);
     }
 
-    // Запуск: сразу 2 штуки, потом каждые 2.5 сек
     spawnPetal();
     setTimeout(spawnPetal, 800);
     setInterval(spawnPetal, 2500);
 
     /* ——————————————————————————————
-       6. DRESSCODE COLOR PICKER & AUTO-CHANGE
+       9. DRESSCODE COLOR PICKER & AUTO-CHANGE
     —————————————————————————————— */
     const colorSwatches = document.querySelectorAll('.color-swatch');
     const dressFills = document.querySelectorAll('.dresscode-fill');
@@ -226,15 +259,12 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Автоматическая смена цветов (каждые 2 секунды)
         setInterval(() => {
-            // Теперь каждый выбирает цвет независимо, чтобы иногда они были одинаковыми
             const color1 = autoColors[Math.floor(Math.random() * autoColors.length)];
             const color2 = autoColors[Math.floor(Math.random() * autoColors.length)];
-            
+
             dressFills.forEach((el, i) => {
                 el.style.transition = 'fill 1s ease';
-                // Первые 5 путей - это костюм, остальные 2 - платье
                 if (i < 5) {
                     el.style.fill = color1;
                 } else {
@@ -243,47 +273,4 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }, 2000);
     }
-
-    /* ——————————————————————————————
-       7. AUTO SCROLL DOWN
-    —————————————————————————————— */
-    let autoScrollActive = true;
-    let scrollStarted = false;
-    const scrollSpeed = 0.5; // Скорость (пикселей за кадр)
-
-    function step() {
-        if (!autoScrollActive) return;
-        
-        window.scrollBy(0, scrollSpeed);
-        
-        // Проверка на конец страницы
-        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-        const totalHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-        
-        if ((window.innerHeight + scrollPos) >= totalHeight - 5) {
-            autoScrollActive = false;
-        } else {
-            requestAnimationFrame(step);
-        }
-    }
-
-    // Запуск через 3 секунды после загрузки (или по первому клику выше)
-    setTimeout(() => {
-        if (!scrollStarted && autoScrollActive) {
-            scrollStarted = true;
-            startMusic(); // Пробуем запустить вместе со скроллом
-            requestAnimationFrame(step);
-        }
-    }, 3000);
-
-    // Остановка при ручном вмешательстве пользователя
-    const stopScroll = () => { 
-        if (autoScrollActive) {
-            console.log("Auto-scroll stopped by user");
-            autoScrollActive = false; 
-        }
-    };
-    window.addEventListener('wheel', stopScroll, { passive: true });
-    window.addEventListener('touchmove', stopScroll, { passive: true });
-    window.addEventListener('mousedown', stopScroll);
 });

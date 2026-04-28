@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Үйлену тойы - Раджан мен Диляра</title>
-    <meta name="description"
-        content="Уважаемые гости! Приглашаем вас на свадьбу Раджана и Диляры. Чтобы увидеть приглашение просим вас нажать на ссылку и листать вниз">
-
+    <title>Свадьба - Раджан и Диляра</title>
+    <meta name="description" content="Уважаемые гости! Приглашаем вас на свадьбу Раджана и Диляры. Чтобы увидеть приглашение просим вас нажать на ссылку и листать вниз">
+    
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Свадьба Раджана и Диляры">
-    <meta property="og:description" content="Құрметті қонақтар! Сіздерді Раджан мен Диляраның үйлену тойына шақырамыз. Шақыруды көру үшін сілтемені басып, төмен қарай жылжытыңыз">
+    <meta property="og:description" content="Уважаемые гости! Приглашаем вас на свадьбу Раджана и Диляры. Чтобы увидеть приглашение просим вас нажать на ссылку и листать вниз">
     <meta property="og:image" content="photo11.jpg">
 
     <!-- Google Fonts -->
@@ -29,18 +28,18 @@
     <div id="splash-screen">
         <div class="splash-icon">💍</div>
         <div class="splash-title">Раджан & Диляра</div>
-        <div class="splash-sub">Раджан мен Диляраның үйлену тойына шақырамыз</div>
+        <div class="splash-sub">Приглашаем вас на свадьбу Раджана и Диляры</div>
         <div class="splash-divider"></div>
-        <div class="splash-tap">Экранға басыңыз</div>
+        <div class="splash-tap">Нажмите на экран</div>
     </div>
 
     <div class="app-container">
 
         <!-- ===== LANGUAGE SWITCHER ===== -->
         <div class="lang-switcher fade-in">
-            <a href="index_ru.html">RU</a>
+            <a href="index_ru.html" class="active">RU</a>
             <span>|</span>
-            <a href="index.html" class="active">KZ</a>
+            <a href="index.html">KZ</a>
         </div>
 
         <!-- ===== HERO ===== -->
@@ -50,7 +49,7 @@
             </video>
             <div class="hero-text">
                 <h2 class="hero-name">Раджан & Диляра</h2>
-                <h1 class="hero-title">Үйлену тойы</h1>
+                <h1 class="hero-title">Свадьба</h1>
 
                 <!-- Круговой плеер -->
                 <div class="player-wrap">
@@ -59,13 +58,13 @@
                             <defs>
                                 <path id="cp" d="M60,60 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"></path>
                             </defs>
-                            <text font-size="6.5" font-family="Montserrat,sans-serif" font-weight="600" fill="#f8f5f0">
-                                <textPath href="#cp" startOffset="0" textLength="238.5" lengthAdjust="spacing">ОСЫ
-                                    ЖЕРДЕН МУЗЫКАНЫ ҚОСУ • ОСЫ ЖЕРДЕН МУЗЫКАНЫ ҚОСУ • </textPath>
+                            <text font-size="7" font-family="Montserrat,sans-serif" font-weight="600" fill="#f8f5f0">
+                                <textPath href="#cp" startOffset="0" textLength="238.5" lengthAdjust="spacing">ВКЛЮЧИТЬ
+                                    МУЗЫКУ ЗДЕСЬ • ВКЛЮЧИТЬ МУЗЫКУ ЗДЕСЬ •</textPath>
                             </text>
                         </svg>
                     </div>
-                    <button id="music-btn" class="play-btn" aria-label="Музыканы қосу">
+                    <button id="music-btn" class="play-btn" aria-label="Воспроизвести музыку">
                         <svg class="icon-play-svg" viewBox="0 0 24 24">
                             <!-- Иконка ноты -->
                             <path
@@ -89,10 +88,10 @@
             <!-- Таймер -->
             <div class="timer" id="timer">
                 <div class="timer-item"><span id="days">00</span>
-                    <p>күн</p>
+                    <p>дней</p>
                 </div>
                 <div class="timer-item"><span id="hours">00</span>
-                    <p>сағат</p>
+                    <p>часов</p>
                 </div>
                 <div class="timer-item"><span id="minutes">00</span>
                     <p>минут</p>
@@ -104,12 +103,12 @@
 
             <!-- Текст приглашения -->
             <div class="invitation-text">
-                <h3 class="script-heading">Құрметті қонақтар!</h3>
-                <p>Жанұямыздың қуанышы, балаларымыз
+                <h3 class="script-heading">Дорогие гости!</h3>
+                <p>В нашей семье настал важный и радостный момент. Приглашаем вас разделить наше счастье на торжестве, посвященном бракосочетанию наших детей
                 </p>
-                <div class="bride-name-inline">Раджан мен Диляраның</div>
-                <p>үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!</p>
-                <p class="parents-sig">Игі тілекпен,<br>ата-анасы Бекболат – Гүлназ</p>
+                <div class="bride-name-inline">Раджан и Диляра</div>
+                <p>Приглашаем вас разделить эту радость и стать почетными гостями нашего торжества! Мы будем рады видеть вас в этот особенный для нас день.</p>
+                <p class="parents-sig">С добрыми пожеланиями,<br>родители Бекболат — Гульназ</p>
             </div>
         </section>
 
@@ -123,17 +122,17 @@
         <!-- ===== DETAILS (INFO CARD ON PHOTO) ===== -->
         <section class="details-section">
             <div class="details-card">
-                <h3 class="serif-heading">Той туралы</h3>
-                <p class="detail-line">Той иелері: Бекболат - Гүлназ</p>
+                <h3 class="serif-heading">О мероприятии</h3>
+                <p class="detail-line">Организаторы: Бекболат - Гульназ</p>
 
-                <h3 class="serif-heading">Өтетін уақыты</h3>
-                <p class="detail-line">30 тамыз &nbsp;|&nbsp; 18:00</p>
+                <h3 class="serif-heading">Время мероприятия</h3>
+                <p class="detail-line">30 августа &nbsp;|&nbsp; 18:00</p>
 
-                <h3 class="serif-heading">Өтетін орны</h3>
-                <p class="detail-line">Өскемен қаласы,<br>Оралхан Бөкей көшесі, 16/2<br>«Dastarkhan» мейрамханасы</p>
+                <h3 class="serif-heading">Адрес мероприятия</h3>
+                <p class="detail-line">г. Усть-Каменогорск,<br>ул. Оралхан Бокей, 16/2<br>Ресторан «Dastarkhan»</p>
 
-                <a href="https://2gis.kz/ustkam/search/Оралхан%20Бокей%2016%2F2" target="_blank"
-                    class="btn-map">2GIS-тен ашу</a>
+                <a href="https://2gis.kz/ustkam/search/Оралхан%20Бокей%2016%2F2" target="_blank" class="btn-map">Открыть
+                    в 2GIS</a>
             </div>
         </section>
 
@@ -157,8 +156,8 @@
         <section class="dresscode-section fade-in">
             <div class="detail-card-dresscode">
                 <h3 class="serif-heading">Дресс-код</h3>
-                <p class="detail-line">Тойдың түс гаммасын қолдасаңыздар, қуаныштымыз:</p>
-
+                <p class="detail-line">Мы будем рады, если вы поддержите цветовую гамму нашей свадьбы:</p>
+                
                 <div class="color-palette">
                     <div class="color-swatch" style="background:#D6CCBC;" title="Бежевый"></div>
                     <div class="color-swatch" style="background:#5E3A2C;" title="Шоколад"></div>
@@ -167,11 +166,11 @@
                 <svg id="dresscode-svg" class="dresscode-svg" viewBox="0 0 400 400" width="100%">
                     <defs>
                         <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-                            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.08" />
+                            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.08"/>
                         </filter>
                     </defs>
 
-                    <!-- МУЖСКОЙ КОСТЮМ (слева) -->
+                    <!-- ====== МУЖСКОЙ КОСТЮМ (слева) ====== -->
                     <!-- ЗАЛИВКИ ПИДЖАКА -->
                     <!-- Рукава -->
                     <path class="dresscode-fill" fill="#5E3A2C" d="M 65 105 C 50 120, 40 180, 45 230 L 60 230 C 60 180, 65 150, 75 115 Z" filter="url(#shadow)"/>
@@ -232,7 +231,8 @@
                         <line x1="75" y1="345" x2="145" y2="345"/>
                     </g>
 
-                    <!-- ЖЕНСКОЕ ПЛАТЬЕ (справа) -->
+                    <!-- ====== ЖЕНСКОЕ ПЛАТЬЕ (справа) ====== -->
+
                     <!-- ЗАЛИВКИ ПЛАТЬЯ (меняются при клике) -->
                     <path class="dresscode-fill" fill="#D6CCBC" d="M 262 115 Q 275 120 280 125 Q 285 120 298 115 C 305 130, 300 145, 292 160 Q 280 165 268 160 C 260 145, 255 130, 262 115 Z" />
                     <path class="dresscode-fill" fill="#D6CCBC" d="M 268 160 Q 280 165 292 160 Q 330 250 350 330 Q 338 335 325 325 Q 305 340 280 340 Q 255 340 235 325 Q 222 335 210 330 Q 230 250 268 160 Z" />
@@ -255,7 +255,7 @@
                     </g>
                 </svg>
 
-                <p class="dress-note">Біз сіздерді дәл өздеріңіздей әдемі кешкі образда күтеміз!</p>
+                <p class="dress-note">Будем ждать Вас в таких же красивых образах, как и Вы сами!</p>
             </div>
         </section>
 
@@ -263,55 +263,55 @@
         <!-- ===== RSVP (FORM ON PHOTO) ===== -->
         <section class="rsvp-section">
             <div class="rsvp-inner">
-                <h2 class="rsvp-title">Құрметті қонақтар, тойымызға келетініңізді растауыңызды сұраймыз!</h2>
+                <h2 class="rsvp-title">Дорогие гости, пожалуйста, подтвердите ваше участие в нашем празднике!</h2>
 
                 <form id="rsvp-form">
                     <div class="field-group">
-                        <label>Атыңыз</label>
-                        <input type="text" id="first-name" name="first_name" placeholder="Атыңызды жазыңыз" required>
+                        <label>Имя</label>
+                        <input type="text" id="first-name" name="first_name" placeholder="Ваше Имя" required>
                     </div>
 
                     <div class="field-group">
-                        <label>Тегіңіз</label>
-                        <input type="text" id="last-name" name="last_name" placeholder="Тегіңізді жазыңыз" required>
+                        <label>Фамилия</label>
+                        <input type="text" id="last-name" name="last_name" placeholder="Ваша Фамилия" required>
                     </div>
 
                     <div class="field-group">
-                        <label>Келесіз бе?</label>
+                        <label>Сможете прийти?</label>
                         <label class="radio-row">
-                            <input type="radio" name="attendance" value="Келемін" checked>
-                            <span class="radio-dot"></span> Келемін
+                            <input type="radio" name="attendance" value="Приду" checked>
+                            <span class="radio-dot"></span> Приду
                         </label>
                         <label class="radio-row">
-                            <input type="radio" name="attendance" value="Келе алмаймын">
-                            <span class="radio-dot"></span> Келе алмаймын
+                            <input type="radio" name="attendance" value="Не смогу">
+                            <span class="radio-dot"></span> Не смогу
                         </label>
                     </div>
 
                     <div class="field-group" id="persons-group">
-                        <label>Қанша адам келесіздер?</label>
+                        <label>Какое количество персон</label>
                         <input type="number" id="persons" name="persons" placeholder="?" min="1">
                     </div>
 
                     <div class="submit-wrap">
-                        <button type="submit" class="btn-submit">Жіберу</button>
+                        <button type="submit" class="btn-submit">Отправить</button>
                     </div>
                 </form>
 
                 <div id="form-success" class="hidden success-msg">
-                    <p>Рақмет! Сіздің жауабыңыз қабылданды. 🎉</p>
+                    <p>Спасибо! Ваш ответ успешно записан. 🎉</p>
                 </div>
             </div>
         </section>
 
         <!-- ===== FOOTER ===== -->
         <footer class="site-footer">
-            <p>2026 © Раджан мен Диляраның шақыруы</p>
+            <p>2026 © Приглашение Раджан и Диляра</p>
         </footer>
 
     </div><!-- /app-container -->
 
-    <script src="script_kz.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
