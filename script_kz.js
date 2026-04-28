@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isPlaying) return;
         
         if (audio.currentTime === 0) {
-            audio.currentTime = 47;
+            audio.currentTime = 46;
         }
 
         if (heroVideo && heroVideo.paused) {
@@ -129,9 +129,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Запуск при любом первом взаимодействии с сайтом (клик или скролл)
+    // Запуск при любом первом взаимодействии с сайтом
     const initInteraction = () => {
         startMusic();
+        // Если автопрокрутка еще не началась, запустим ее раньше (на взаимодействие)
+        if (autoScrollActive && !scrollStarted) {
+            scrollStarted = true;
+            requestAnimationFrame(step);
+        }
         window.removeEventListener('click', initInteraction);
         window.removeEventListener('scroll', initInteraction);
         window.removeEventListener('touchstart', initInteraction);
@@ -243,6 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
        7. AUTO SCROLL DOWN
     —————————————————————————————— */
     let autoScrollActive = true;
+    let scrollStarted = false;
     const scrollSpeed = 0.5; // Скорость (пикселей за кадр)
 
     function step() {
@@ -251,21 +257,33 @@ document.addEventListener('DOMContentLoaded', function () {
         window.scrollBy(0, scrollSpeed);
         
         // Проверка на конец страницы
-        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2) {
+        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+        const totalHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        
+        if ((window.innerHeight + scrollPos) >= totalHeight - 5) {
             autoScrollActive = false;
         } else {
             requestAnimationFrame(step);
         }
     }
 
-    // Запуск через 3 секунды после загрузки
+    // Запуск через 3 секунды после загрузки (или по первому клику выше)
     setTimeout(() => {
-        requestAnimationFrame(step);
+        if (!scrollStarted && autoScrollActive) {
+            scrollStarted = true;
+            startMusic(); // Пробуем запустить вместе со скроллом
+            requestAnimationFrame(step);
+        }
     }, 3000);
 
     // Остановка при ручном вмешательстве пользователя
-    const stopScroll = () => { autoScrollActive = false; };
-    window.addEventListener('wheel', stopScroll);
-    window.addEventListener('touchstart', stopScroll);
+    const stopScroll = () => { 
+        if (autoScrollActive) {
+            console.log("Auto-scroll stopped by user");
+            autoScrollActive = false; 
+        }
+    };
+    window.addEventListener('wheel', stopScroll, { passive: true });
+    window.addEventListener('touchmove', stopScroll, { passive: true });
     window.addEventListener('mousedown', stopScroll);
 });

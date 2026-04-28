@@ -43,7 +43,7 @@
     --font-script: 'KZ Rosa Marena', 'Great Vibes', cursive;
     --font-script2: 'AsylbekM02Shelley', 'Marck Script', cursive;
     --font-serif: 'Playfair Display', serif;
-    --font-sans: 'KZ Cavaler', 'Montserrat', sans-serif;
+    --font-sans: 'Cormorant Garamond', serif;
 }
 
 /* ============================
@@ -69,7 +69,8 @@ body {
     min-height: 100vh;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.18);
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .hidden {
@@ -148,6 +149,12 @@ body {
 
 /* Скрываем стандартные контролы видео, если они вдруг появятся */
 .hero-video::-webkit-media-controls {
+    display: none !important;
+}
+.hero-video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+.hero-video::-webkit-media-controls-overlay-play-button {
     display: none !important;
 }
 
