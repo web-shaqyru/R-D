@@ -30,16 +30,17 @@
    CSS Переменные
    ============================ */
 :root {
-    --brown: #7c605a;
-    /* таймер, акцент */
-    --dark-text: #3d2b27;
-    /* основной тёмный текст */
-    --body-text: #555555;
+    --brown: #2e5244;
+    /* Глубокий изумрудный (заменит коричневый акцент и таймер) */
+    --dark-text: #1a2f27;
+    /* Очень темный зеленый для заголовков */
+    --body-text: #4a5c54;
+    /* Приглушенный серо-зеленый для основного текста */
     --white: #ffffff;
-    --bg-cream: #f8f5f0;
-    /* кремовый фон белой секции */
-    --gold: #c5a87a;
-    /* декоративный золотистый */
+    --bg-cream: #f4f7f5;
+    /* Слегка прохладный кремово-жемчужный фон */
+    --gold: #c5a467;
+    /* Более яркое золото для контраста с зеленым */
     --font-script: 'KZ Rosa Marena', 'Great Vibes', cursive;
     --font-script2: 'AsylbekM02Shelley', 'Marck Script', cursive;
     --font-serif: 'Playfair Display', serif;
@@ -1168,26 +1169,30 @@ body {
    DRESS CODE (INTERACTIVE)
    ============================ */
 .dresscode-section {
-    background: url('photo3.jpg') center center / cover no-repeat;
-    background-attachment: local;
-    padding: 0 0 60px;
     position: relative;
+    background-color: var(--bg-cream);
+    padding: 60px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .dresscode-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(245, 240, 235, 0.25);
+    display: none;
 }
 
 .detail-card-dresscode {
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.88);
-    margin: 0 20px;
-    padding: 40px 28px;
+    background: #ffffff;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding: 40px 24px 30px;
     text-align: center;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.03);
 }
 
 .color-palette {

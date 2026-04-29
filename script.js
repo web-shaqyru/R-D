@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
     —————————————————————————————— */
     let autoScrollActive = false;
     let scrollStarted = false;
-    const scrollSpeed = 0.5;
+    const scrollSpeed = 0.4;
 
     function step() {
         if (!autoScrollActive) return;
@@ -172,8 +172,10 @@ document.addEventListener('DOMContentLoaded', function () {
             // Запускаем автопрокрутку
             if (!scrollStarted) {
                 scrollStarted = true;
-                autoScrollActive = true;
-                requestAnimationFrame(step);
+                setTimeout(() => {
+                    autoScrollActive = true;
+                    requestAnimationFrame(step);
+                }, 1000);
             }
 
             // Скрываем заставку с анимацией
@@ -249,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function () {
     —————————————————————————————— */
     const colorSwatches = document.querySelectorAll('.color-swatch');
     const dressFills = document.querySelectorAll('.dresscode-fill');
-    const autoColors = ['#D6CCBC', '#5E3A2C'];
+    const autoColors = ['#D6CCBC', '#5E3A2C', '#2e5244', '#c5a467'];
 
     if (colorSwatches.length > 0) {
         colorSwatches.forEach(swatch => {
