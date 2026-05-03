@@ -128,6 +128,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     /* ——————————————————————————————
+       4б. ПАУЗА при скрытии вкладки / сворачивании браузера
+    —————————————————————————————— */
+    let pausedByVisibility = false; // флаг: мы сами поставили на паузу
+
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            // Вкладка скрыта: ставим на паузу, если играло
+            if (isPlaying) {
+                audio.pause();
+                pausedByVisibility = true;
+            }
+        } else {
+            // Вкладка снова активна: возобновляем, если мы сами ставили паузу
+            if (pausedByVisibility) {
+                audio.play().then(() => {
+                    pausedByVisibility = false;
+                }).catch(err => {
+                    console.log('Музыка: не удалось возобновить:', err);
+                    pausedByVisibility = false;
+                });
+            }
+        }
+    });
+
+    /* ——————————————————————————————
        5. AUTO SCROLL DOWN
     —————————————————————————————— */
     let autoScrollActive = false;
