@@ -193,6 +193,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const successMsg = document.getElementById('form-success');
 
     if (form) {
+        // Toggle persons field based on attendance
+        const attendanceRadios = form.querySelectorAll('input[name="attendance"]');
+        const personsGroup = document.getElementById('persons-group');
+        const personsInput = document.getElementById('persons');
+
+        if (attendanceRadios && personsGroup && personsInput) {
+            attendanceRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.value === 'Не смогу' || e.target.value === 'Келе алмаймын') {
+                        personsGroup.classList.add('hidden');
+                        personsInput.required = false;
+                        personsInput.value = '';
+                    } else {
+                        personsGroup.classList.remove('hidden');
+                        personsInput.required = true;
+                        if (!personsInput.value) personsInput.value = '1';
+                    }
+                });
+            });
+        }
+
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             const data = {

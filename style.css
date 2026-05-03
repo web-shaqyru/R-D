@@ -364,7 +364,7 @@ body {
 }
 
 .timer-item {
-    background: var(--brown);
+    background: #7c605a; /* Старый коричневый цвет */
     border-radius: 22px;
     flex: 1;
     padding: 14px 6px 12px;
